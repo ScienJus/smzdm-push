@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SmzdmPush</title>
+  <title>什么值得买 非官方推送</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= nav_bar brand: "什么值得买 非官方推送", brand_link: root_path do %>
+	<%= menu_group pull: :right do %>
+		<% if current_user %>
+			<%= menu_item "注销", destroy_user_session_path, method: "DELETE" %>
+		<% else %>
+			<%= menu_item "登录", new_user_session_path %>
+			<%= menu_item "注册", new_user_registration_path %>
+		<% end %>
+	<% end %>
+<% end %>
 <%= yield %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 </body>
 </html>
