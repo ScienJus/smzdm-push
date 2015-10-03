@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002142808) do
+ActiveRecord::Schema.define(version: 20151003053702) do
 
   create_table "keywords", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "subscribe_count"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "subscribes_count"
   end
 
   create_table "subscribes", force: :cascade do |t|
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20151002142808) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "subscribes", ["user_id", "keyword_id"], name: "index_subscribes_on_user_id_and_keyword_id", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
