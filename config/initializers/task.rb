@@ -62,7 +62,7 @@ scheduler.every '180s' do
           if title.include? keyword.name
             puts "keyword: #{keyword.name} title: #{title}"
             
-            keyword.users.each do |user| 
+            keyword.users.where(active: true).each do |user| 
               if push_users.has_key? user.email
                 push_users[user.email].push keyword.name
               else
@@ -72,7 +72,7 @@ scheduler.every '180s' do
           end
         end
         
-        push_users.each do |email, keywords| 
+        push_users.each do |email, keywords|
           SubscribeMailer.push_email(email, keywords, article).deliver
         end
       end
