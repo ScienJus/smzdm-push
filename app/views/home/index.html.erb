@@ -1,2 +1,90 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="main">
+	<table id="main-table" class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="keyword">关键词</th>
+				<th>管理<button type="button" class="btn btn-success btn-create btn-xs" data-toggle="modal" data-target="#create-modal">新增</button></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr>
+				<td>白菜</td>
+				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
+			</tr>
+			<tr id="tr-tools">
+				<td colspan=2>
+					<button type="button" class="btn btn-warning btn-xs">暂时不想收到订阅</button>
+					<button type="button" class="btn btn-danger btn-clear btn-xs">清除账号信息</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="create-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">添加关键词</h4>
+      </div>
+      <div class="modal-body">  
+		<div id="modal-body">
+			<form class="form-inline">
+				<input type="text" id="input-keyword" class="form-control" placeholder="请输入关键词">
+				<button type="button" id="submit-keyword" class="btn btn-success">添加</button>
+	      	</form>
+			<h3>热门标签</h3>
+			<button type="button" class="btn btn-default btn-key">白菜</button>
+			<button type="button" class="btn btn-primary btn-key">iPad</button>
+			<button type="button" class="btn btn-success btn-key">咖啡</button>
+			<button type="button" class="btn btn-info btn-key">冰箱</button>
+			<button type="button" class="btn btn-warning btn-key">笔记本电脑</button>
+			<button type="button" class="btn btn-danger btn-key">新百伦</button>
+			<button type="button" class="btn btn-default btn-key">白菜</button>
+			<button type="button" class="btn btn-primary btn-key">iPad</button>
+			<button type="button" class="btn btn-success btn-key">咖啡</button>
+			<button type="button" class="btn btn-info btn-key">冰箱</button>
+			<button type="button" class="btn btn-warning btn-key">笔记本电脑</button>
+			<button type="button" class="btn btn-danger btn-key">新百伦</button>
+			<button type="button" class="btn btn-default btn-key">白菜</button>
+			<button type="button" class="btn btn-primary btn-key">iPad</button>
+			<button type="button" class="btn btn-success btn-key">咖啡</button>
+			<button type="button" class="btn btn-info btn-key">冰箱</button>
+			<button type="button" class="btn btn-warning btn-key">笔记本电脑</button>
+			<button type="button" class="btn btn-danger btn-key">新百伦</button>
+			<button type="button" class="btn btn-default btn-key">白菜</button>
+			<button type="button" class="btn btn-primary btn-key">iPad</button>
+			<button type="button" class="btn btn-success btn-key">咖啡</button>
+			<button type="button" class="btn btn-info btn-key">冰箱</button>
+			<button type="button" class="btn btn-warning btn-key">笔记本电脑</button>
+			<button type="button" class="btn btn-danger btn-key">新百伦</button>
+		</div>
+  	</div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
