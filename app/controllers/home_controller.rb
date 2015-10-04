@@ -64,4 +64,49 @@ class HomeController < ApplicationController
       end
     end
   end
+  
+  def user_active
+    unless current_user.active
+      current_user.active = true
+      current_user.save
+      respond_to do |format|
+        format.json { 
+          render json: { success: true, message: '开启订阅成功' }
+        }
+      end
+    else
+      respond_to do |format|
+        format.json { 
+          render json: { success: false, message: '并没有关闭订阅' }
+        }
+      end
+    end
+  end
+  
+  def user_unactive
+    if current_user.active
+      current_user.active = false
+      current_user.save
+      respond_to do |format|
+        format.json { 
+          render json: { success: true, message: '关闭订阅成功' }
+        }
+      end
+    else
+      respond_to do |format|
+        format.json { 
+          render json: { success: false, message: '并没有开启订阅' }
+        }
+      end
+    end
+  end
+  
+  def delete_account
+    current_user.destroy
+    respond_to do |format|
+      format.json { 
+        render json: { success: true, message: '清除账号成功' }
+      }
+    end
+  end
 end

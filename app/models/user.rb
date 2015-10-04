@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
          
-  has_many :subscribes
+  has_many :subscribes, dependent: :destroy
   has_many :keywords, through: :subscribes
 end
