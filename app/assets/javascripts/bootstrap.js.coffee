@@ -13,6 +13,7 @@ jQuery ->
       success: (data) ->
         if data['success']
           $("#tr-tools").before("<tr><td>#{keyword}</td><td><button type='button' class='btn btn-danger btn-remove'>删除</button></td></td>")
+          $("#input-keyword").val("")
           $("#create-modal").modal("toggle")
         else
           alert data['message']
