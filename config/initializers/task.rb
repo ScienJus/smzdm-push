@@ -54,16 +54,26 @@ scheduler.every '1s' do
         title = article['article_title']
         
         #得到所有keyword
-        # keywords = Keyword.all
-        keywords = ["咖啡", "猫头鹰", "腕表"]
-        
+        keywords = Keyword.all
+                
+        push_users = {}
+                
         keywords.each do |keyword|
-          if title.include? keyword
-            puts "keyword: #{keyword} title: #{title}"
-            user = User.new
-            user.email = "test@qq.com"
-            SubscribeMailer.push_email(user, keyword, article).deliver
+          if title.include? keyword.name
+            puts "keyword: #{keyword.name} title: #{title}"
+            
+            keyword.users.each do |user| 
+              if push_users.has_key? user.email
+                push_users[user.email].push keyword.name,
+              else
+                push_users[user.email] = [keyword.name]
+              end
+            end
           end
+        end
+        
+        push_users each do |email, keywords| 
+          SubscribeMailer.push_email(email, keywords, article).deliver
         end
       end
     end
