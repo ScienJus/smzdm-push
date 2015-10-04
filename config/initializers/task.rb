@@ -8,7 +8,7 @@ scheduler = Rufus::Scheduler.new
 #记录上次采集开始时间
 @last_collect_start_time = Time.now.to_i
 
-scheduler.every '1s' do
+scheduler.every '180s' do
   
   #记录这次采集开始时间
   this_collect_start_time = Time.now.to_i
@@ -64,7 +64,7 @@ scheduler.every '1s' do
             
             keyword.users.each do |user| 
               if push_users.has_key? user.email
-                push_users[user.email].push keyword.name,
+                push_users[user.email].push keyword.name
               else
                 push_users[user.email] = [keyword.name]
               end
@@ -72,7 +72,7 @@ scheduler.every '1s' do
           end
         end
         
-        push_users each do |email, keywords| 
+        push_users.each do |email, keywords| 
           SubscribeMailer.push_email(email, keywords, article).deliver
         end
       end
