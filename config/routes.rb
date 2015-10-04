@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
+  #主页
   root to: "home#index"
+  
+  #管理页面
+  get 'home/index', to: 'home#index'
+
+  #创建订阅关键词
+  post 'keywords/:name/subscribe', to: 'home#create_subscribe'
+  #取消订阅关键词
+  delete 'keywords/:id/subscribe', to: 'home#delete_subscribe'
+  
+  #恢复订阅
+  post 'users/active', to: 'home#user_active'
+  #关闭订阅
+  delete 'users/active', to: 'home#user_unactive'
+  
+  #清除账号信息
+  delete 'users/account', to: 'home#delete_account'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -7,34 +7,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
-			<tr>
-				<td>白菜</td>
-				<td><button type="button" class="btn btn-danger btn-remove">删除</button></td>
-			</tr>
+			<% @user.keywords.each do |keyword| %>
+				<tr>
+					<td><%= keyword.name %></td>
+					<td><button type="button" class="btn btn-danger btn-remove" keyword_id="<%= keyword.id %>">删除</button></td>
+				</tr>
+			<% end %>
 			<tr id="tr-tools">
 				<td colspan=2>
 					<button type="button" class="btn btn-warning btn-xs">暂时不想收到订阅</button>

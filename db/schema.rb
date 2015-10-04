@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003053702) do
+ActiveRecord::Schema.define(version: 20151004085131) do
 
   create_table "keywords", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20151003053702) do
     t.datetime "updated_at",       null: false
     t.integer  "subscribes_count"
   end
+
+  add_index "keywords", ["name"], name: "index_keywords_on_name", unique: true
 
   create_table "subscribes", force: :cascade do |t|
     t.integer  "user_id"
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(version: 20151003053702) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "active"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
