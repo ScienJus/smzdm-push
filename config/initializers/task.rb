@@ -51,7 +51,7 @@ scheduler.every '180s' do
         
         #处理采集到的数据
         # puts article['article_title']
-        title = article['article_title']
+        content = article['article_title'] + article['article_content']
         
         #得到所有keyword
         keywords = Keyword.all
@@ -59,8 +59,8 @@ scheduler.every '180s' do
         push_users = {}
                 
         keywords.each do |keyword|
-          if title.downcase.include? keyword.name.downcase
-            puts "keyword: #{keyword.name} title: #{title}"
+          if content.downcase.include? keyword.name.downcase || 
+            puts "keyword: #{keyword.name} content: #{content}"
             
             keyword.users.where(active: true).each do |user| 
               if push_users.has_key? user.email
