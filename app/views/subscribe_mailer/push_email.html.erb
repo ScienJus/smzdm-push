@@ -1,4 +1,7 @@
-<h1>您订阅的[<%= @keyword %>]有了一条新推送！</h1>
-<h2><a href="<%= @article['article_url'] %>"><%= @article['article_title'] %></a></h2>
-<p><%= @article['article_content'] %></p>
-<img src="<%= @article['article_pic_url'] %>" />
+<h1>您订阅的[<%= @keyword %>]有了<%= @articles.length %>条新推送！</h1>
+<% @articles.each do |article| %>
+	<h2><a href="<%= article['article_url'] %>"><%= article['article_title'] %></a></h2>
+	<p><%= article['article_content'].gsub(/<\/?.*?>/,"") %></p>
+	<img src="<%=article['article_pic_url'] %>" />
+	<hr />
+<% end %>
