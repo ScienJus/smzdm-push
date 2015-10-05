@@ -59,7 +59,7 @@ scheduler.every '180s' do
         push_users = {}
                 
         keywords.each do |keyword|
-          if content.downcase.include? keyword.name.downcase || 
+          if content.downcase.include? keyword.name.downcase
             puts "keyword: #{keyword.name} content: #{content}"
             
             keyword.users.where(active: true).each do |user| 
