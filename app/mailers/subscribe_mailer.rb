@@ -1,5 +1,5 @@
 class SubscribeMailer < ApplicationMailer
-  default from: 'test@qq.com'
+  default from: '931996776@qq.com'
 
   def push_email(email, keywords, article)
     @email = email
