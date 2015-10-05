@@ -9,9 +9,11 @@ scheduler = Rufus::Scheduler.new
 @last_collect_start_time = Time.now.to_i
 
 scheduler.every '300s' do
-  
+    
   #记录这次采集开始时间
   this_collect_start_time = Time.now.to_i
+  
+  puts "now:#{this_collect_start_time}, last:#{@last_collect_start_time}"
   
   #因为一次采集可能会请求多次，记录每次请求的时间
   loop_request_time_sort = this_collect_start_time
