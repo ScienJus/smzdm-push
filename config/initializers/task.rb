@@ -62,11 +62,9 @@ scheduler.every '300s' do
                 
         keywords.each do |keyword|
           if content.downcase.include? keyword.name.downcase
-            
-            puts "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]!"
-            
+            logger.info "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]!"
             keyword.users.where(active: true).each do |user| 
-              puts "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]，匹配到了用户[#{user.email}]!"
+              logger.info "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]，匹配到了用户[#{user.email}]!"
               if push_users.has_key? user.email
                 push_users[user.email][:keywords].push keyword.name unless push_users[user.email][:keywords].include? keyword.name
                 push_users[user.email][:articles].push article unless push_users[user.email][:articles].include? article
@@ -84,7 +82,7 @@ scheduler.every '300s' do
   
   #发布推送信息
   push_users.each do |email, value|
-    puts "即将给用户[#{email}]发送邮件"
+    logger.info "即将给用户[#{email}]发送邮件"
     SubscribeMailer.push_email(email, value[:keywords], value[:articles]).deliver
   end
   
