@@ -3,12 +3,16 @@ require 'net/http'
 require 'uri'
 require 'json'
 
+Rails.logger.info "开始初始化定时任务"
+
 scheduler = Rufus::Scheduler.new
 
 #记录上次采集开始时间
 @last_collect_start_time = Time.now.to_i
 
 scheduler.every '300s' do
+    
+  Rails.logger.info "开始采集#{Time.now.to_s}!"
     
   #记录这次采集开始时间
   this_collect_start_time = Time.now.to_i
@@ -52,7 +56,7 @@ scheduler.every '300s' do
         #如果时间戳已经在上次采集时间之前，说明此次采集已经完成
         break if loop_request_time_sort < @last_collect_start_time
         
-        puts "找到了商品#{article['article_title']}!"
+        Rails.logger.info "找到了商品#{article['article_title']}!"
         
         #处理采集到的数据
         content = article['article_title'] + article['article_content']
@@ -62,9 +66,9 @@ scheduler.every '300s' do
                 
         keywords.each do |keyword|
           if content.downcase.include? keyword.name.downcase
-            logger.info "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]!"
+            Rails.logger.info "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]!"
             keyword.users.where(active: true).each do |user| 
-              logger.info "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]，匹配到了用户[#{user.email}]!"
+              Rails.logger.info "商品[#{article['article_title']}]匹配到了关键词[#{keyword.name}]，匹配到了用户[#{user.email}]!"
               if push_users.has_key? user.email
                 push_users[user.email][:keywords].push keyword.name unless push_users[user.email][:keywords].include? keyword.name
                 push_users[user.email][:articles].push article unless push_users[user.email][:articles].include? article
@@ -82,7 +86,7 @@ scheduler.every '300s' do
   
   #发布推送信息
   push_users.each do |email, value|
-    logger.info "即将给用户[#{email}]发送邮件"
+    Rails.logger.info "即将给用户[#{email}]发送邮件"
     SubscribeMailer.push_email(email, value[:keywords], value[:articles]).deliver
   end
   
