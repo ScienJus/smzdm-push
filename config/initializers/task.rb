@@ -10,7 +10,7 @@ scheduler = Rufus::Scheduler.new
 #记录上次采集开始时间
 @last_collect_start_time = Time.now.to_i
 
-scheduler.every '300s' do
+scheduler.every '600s' do
     
   Rails.logger.info "开始采集#{Time.now.to_s}!"
     
