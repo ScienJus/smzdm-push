@@ -18,5 +18,12 @@
 	<% end %>
 <% end %>
 <%= yield %>
+<%= nav_bar brand_link: root_path, fixed: :bottom do %>
+	<%= menu_group do %>
+		<%= menu_item "作者 @ScienJus", 'http://www.scienjus.com' %>
+		<%= menu_item "源码地址", 'https://github.com/ScienJus/smzdm-push' %>
+		<%= menu_item "什么值得买", 'http://www.smzdm.com' %>
+	<% end %>
+<% end %>
 </body>
 </html>
