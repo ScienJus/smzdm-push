@@ -34,7 +34,11 @@ gem 'twitter-bootstrap-rails'
 #For timer
 gem 'rufus-scheduler'
 
+#For less
 gem 'yui-compressor'
+
+#For mysql
+gem 'mysql2', '~> 0.3.13'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

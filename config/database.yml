@@ -24,6 +24,7 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: 
+  username: username
+  password: password
   socket: /var/run/mysqld/mysqld.sock
+  database: smzdm
