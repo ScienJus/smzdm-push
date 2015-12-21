@@ -8,7 +8,7 @@
 
 注册时的密码请设置在8位以上（忘记加提示了）。
 
-有任何疑问请联系我的邮箱：xie_enlong@foxmail.com。
+有任何疑问可以提 Issues 或是通过邮件联系我，我的邮箱：`i@scienjus.com`。
 
 [1]:http://www.smzdm.com
 [2]:http://smzdm.scienjus.com
